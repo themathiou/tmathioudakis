@@ -1,95 +1,85 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
+// import Image from 'next/image';
+import { jobsSeries } from './data/jobs-series';
+import styles from './page.module.css';
+import ReactApexChart from 'react-apexcharts';
 
 export default function Home() {
+  const options: any = {
+    chart: {
+      height: 400,
+      type: 'rangeBar'
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+        barHeight: '50%',
+        rangeBarGroupRows: true
+      }
+    },
+    colors: [
+      '#008FFB',
+      '#00E396',
+      '#FEB019',
+      '#FF4560',
+      '#775DD0',
+      '#3F51B5',
+      '#546E7A',
+      '#D4526E',
+      '#8D5B4C',
+      '#F86624',
+      '#D7263D',
+      '#1B998B',
+      '#2E294E',
+      '#F46036',
+      '#E2C044'
+    ],
+    fill: {
+      type: 'solid'
+    },
+    xaxis: {
+      type: 'datetime'
+    },
+    legend: {
+      hidden: true
+    },
+    tooltip: {
+      custom: (opts: any) => {
+        const fromYear = new Date(opts.y1).getFullYear();
+        const toYear = new Date(opts.y2).getFullYear();
+        // const values = opts.ctx.rangeBar.getTooltipValues(opts);
+
+        return `${opts.x1} ${fromYear} - ${toYear}`;
+      }
+    }
+  };
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
+      <section>
+        <h1>Hi, I'm Theodore Mathioudakis</h1>
+        <p>I'm a software engineer, located in Greece.</p>
         <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
+          I have a decade experience in Software Engineer, starting from SQL and Java and I end up in the front end
+          building complex web and mobile apps, and leading agile full stack teams.
         </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+        <p>I'm open to work as part of a great team or I can deliver for you some</p>
+      </section>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <section style={{ width: '90vw' }}>
+        <ReactApexChart options={options} series={jobsSeries} type={'rangeBar'} height={400} />
+      </section>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+      <section>
+        <h1>Contact details</h1>
+        <ul>
+          <li>GitHub</li>
+          <li>LinkedIn</li>
+          <li>Email</li>
+        </ul>
+      </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <footer>©️ Theodoros Mathioudakis</footer>
     </main>
-  )
+  );
 }
