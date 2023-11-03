@@ -7,10 +7,10 @@ export default function Home() {
       <h1>
         Hello 👋🏼, <br />I am Theodore Mathioudakis
       </h1>
-      <article>
-        I am a software engineer, located in Greece. I have a decade experience in Software Engineer, starting from bla
-        bla bla
-      </article>
+      <p>
+        I am a software engineer, located in Greece. I have a decade experience in Software Engineer. Both corporate and
+        freelance world
+      </p>
 
       {/* <ExperienceChart /> */}
 
@@ -20,8 +20,6 @@ export default function Home() {
         <li>LinkedIn</li>
         <li>Email</li>
       </ul>
-
-      <footer>©️ Theodoros Mathioudakis</footer>
     </Fragment>
   );
 }

@@ -1,3 +1,4 @@
+'use client';
 import ReactApexChart from 'react-apexcharts';
 import { jobsSeries } from '@data/jobs-series';
 
