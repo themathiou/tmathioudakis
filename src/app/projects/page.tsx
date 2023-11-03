@@ -1,23 +1,26 @@
-import { ExperienceChart } from '@components/ExperienceChart/ExperienceChart';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { Fragment } from 'react';
 
-export default function ThoughtsPage() {
+export default function ProjectsPage() {
+  const DynamicExperienceChart = dynamic(() => import('@components/ExperienceChart/ExperienceChart'), { ssr: false });
+
   return (
     <Fragment>
       <h1>Projects</h1>
       <ul>
         <li>
-          <a href=''>trafie.com</a>
+          <Link href='#'>trafie.com</Link>
         </li>
         <li>
-          <a href=''>trackandfield.io</a>
+          <Link href='#'>trackandfield.io</Link>
         </li>
         <li>
-          <a href=''>Athlead</a>
+          <Link href='#'>Athlead</Link>
         </li>
       </ul>
 
-      <ExperienceChart />
+      <DynamicExperienceChart />
     </Fragment>
   );
 }

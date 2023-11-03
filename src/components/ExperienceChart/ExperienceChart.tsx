@@ -52,6 +52,6 @@ const options: any = {
   }
 };
 
-export function ExperienceChart() {
+export default function ExperienceChart() {
   return <ReactApexChart options={options} series={jobsSeries} type={'rangeBar'} height={400} />;
 }
